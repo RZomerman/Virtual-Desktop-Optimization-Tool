@@ -28,15 +28,15 @@
 [Cmdletbinding()]
 Param
 (
-    [Parameter()]
-    [ValidateSet('1909','2004')]
-    $WindowsVersion = 2004,
 
     [Parameter()]
     [Switch]
     $Restart
 
 )
+
+#Added to automatically detect the Windows ReleaseID - RZomerman/rozome
+$WindowsVersion=(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").ReleaseId
 
 #Requires -RunAsAdministrator
 
